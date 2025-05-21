@@ -36,8 +36,7 @@ class Elia(App[None]):
     def __init__(self, config: LaunchConfig, startup_prompt: str = ""):
         self.launch_config = config
 
-        available_themes: dict[str, Theme] = BUILTIN_THEMES.copy()
-        available_themes |= load_user_themes()
+        available_themes: dict[str, Theme] = BUILTIN_THEMES | load_user_themes()
 
         self.themes: dict[str, Theme] = available_themes
         self._registered_themes: dict[str, Theme] = {}
