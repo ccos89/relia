@@ -48,12 +48,12 @@ class EliaChatModel(BaseModel):
 def get_builtin_openai_models() -> list[EliaChatModel]:
     return [
         EliaChatModel(
-            id="elia-gpt-3.5-turbo",
-            name="gpt-3.5-turbo",
-            display_name="GPT-3.5 Turbo",
+            id="elia-gpt-4.1",
+            name="gpt-4.1",
+            display_name="GPT-4.1",
             provider="OpenAI",
             product="ChatGPT",
-            description="Fast & inexpensive model for simple tasks.",
+            description="Flagship GPT model for complex tasks.",
             temperature=0.7,
         ),
         EliaChatModel(
@@ -62,17 +62,16 @@ def get_builtin_openai_models() -> list[EliaChatModel]:
             display_name="GPT-4o",
             provider="OpenAI",
             product="ChatGPT",
-            description="Fastest and most affordable flagship model.",
+            description="Fast, intelligent, flexible GPT model.",
             temperature=0.7,
         ),
         EliaChatModel(
-            id="elia-gpt-4-turbo",
-            name="gpt-4-turbo",
-            display_name="GPT-4 Turbo",
+            id="elia-o4-mini",
+            name="o4-mini",
+            display_name="o4-mini",
             provider="OpenAI",
             product="ChatGPT",
-            description="Previous high-intelligence model.",
-            temperature=0.7,
+            description="Faster, more affordable reasoning model",
         ),
     ]
 
@@ -80,40 +79,32 @@ def get_builtin_openai_models() -> list[EliaChatModel]:
 def get_builtin_anthropic_models() -> list[EliaChatModel]:
     return [
         EliaChatModel(
-            id="elia-claude-3-5-sonnet-20240620",
-            name="claude-3-5-sonnet-20240620",
+            id="elia-claude-3-7-sonnet-20250219",
+            name="claude-3-7-sonnet-20250219",
+            display_name="Claude 3.7 Sonnet",
+            provider="Anthropic",
+            product="Claude 3.7",
+            description=("Anthropic's most intelligent model with extended thinking capabilities"),
+        ),
+        EliaChatModel(
+            id="elia-claude-3-5-sonnet-20241022",
+            name="claude-3-5-sonnet-20241022",
             display_name="Claude 3.5 Sonnet",
             provider="Anthropic",
-            product="Claude 3.5",
-            description=("Anthropic's most intelligent model"),
-        ),
-        EliaChatModel(
-            id="elia-claude-3-haiku-20240307",
-            name="claude-3-haiku-20240307",
-            display_name="Claude 3 Haiku",
-            provider="Anthropic",
-            product="Claude 3",
+            product="Claude 3.5 Sonnet",
             description=(
-                "Fastest and most compact model for near-instant responsiveness"
+                "Anthropic's previous most intelligent model."
             ),
         ),
         EliaChatModel(
-            id="elia-claude-3-sonnet-20240229",
-            name="claude-3-sonnet-20240229",
-            display_name="Claude 3 Sonnet",
+            id="elia-claude-3-5-haiku-20241022",
+            name="claude-3-5-haiku-20241022",
+            display_name="Claude 3.5 Haiku",
             provider="Anthropic",
-            product="Claude 3",
+            product="Claude 3.5 Haiku",
             description=(
-                "Ideal balance of intelligence and speed for enterprise workloads"
+                "Anthropic's fastest and most cost-effective model."
             ),
-        ),
-        EliaChatModel(
-            id="elia-claude-3-opus-20240229",
-            name="claude-3-opus-20240229",
-            display_name="Claude 3 Opus",
-            provider="Anthropic",
-            product="Claude 3",
-            description="Excels at writing and complex tasks",
         ),
     ]
 
@@ -121,21 +112,20 @@ def get_builtin_anthropic_models() -> list[EliaChatModel]:
 def get_builtin_google_models() -> list[EliaChatModel]:
     return [
         EliaChatModel(
-            id="elia-gemini/gemini-1.5-pro-latest",
-            name="gemini/gemini-1.5-pro-latest",
-            display_name="Gemini 1.5 Pro",
+            id="elia-gemini-2.5-pro-preview-05-06",
+            name="gemini-2.5-pro-preview-05-06",
+            display_name="Gemini 2.5 Pro Preview",
             provider="Google",
             product="Gemini",
-            description="Excels at reasoning tasks including code and text generation, "
-            "text editing, problem solving, data extraction and generation",
+            description="Google's most powerful thinking model.",
         ),
         EliaChatModel(
-            id="elia-gemini/gemini-1.5-flash-latest",
-            name="gemini/gemini-1.5-flash-latest",
-            display_name="Gemini 1.5 Flash",
+            id="elia-gemini-2.5-flash-preview-05-20",
+            name="gemini-2.5-flash-preview-05-20",
+            display_name="Gemini 2.5 Flash Preview",
             provider="Google",
             product="Gemini",
-            description="Fast and versatile performance across a variety of tasks",
+            description="Google's first hybrid reasoning model with thinking budgets.",
         ),
     ]
 
