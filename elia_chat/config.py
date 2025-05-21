@@ -12,15 +12,15 @@ from pydantic import (
 
 class EliaChatModel(BaseModel):
     name: str
-    """The name of the model e.g. `gpt-3.5-turbo`.
+    """The name of the model e.g. `gpt-4.1`.
     This must match the name of the model specified by the provider.
     """
     id: str | None = None
     """If you have multiple versions of the same model (e.g. a personal
-    OpenAI gpt-3.5 and a work OpenAI gpt-3.5 with different API keys/org keys),
+    OpenAI gpt-4o and a work OpenAI gpt-4o with different API keys/org keys),
     you need to be able to refer to them. For example, when setting the `default_model`
-    key in the config, if you write `gpt-3.5`, there's no way to know whether you
-    mean your work or your personal `gpt-3.5`. That's where `id` comes in."""
+    key in the config, if you write `gpt-4o`, there's no way to know whether you
+    mean your work or your personal `gpt-4o`. That's where `id` comes in."""
     display_name: str | None = None
     """The display name of the model in the UI."""
     provider: str | None = None
@@ -154,7 +154,7 @@ class LaunchConfig(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    default_model: str = Field(default="elia-gpt-4o")
+    default_model: str = Field(default="elia-gpt-4.1")
     """The ID or name of the default model."""
     system_prompt: str = Field(
         default=os.getenv(
