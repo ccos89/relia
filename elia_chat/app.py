@@ -60,7 +60,6 @@ class Elia(App[None]):
         super().__init__()
 
     theme: Reactive[str | None] = reactive(None, init=False)
-
     @property
     def runtime_config(self) -> RuntimeConfig:
         return self._runtime_config
