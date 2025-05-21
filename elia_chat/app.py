@@ -36,14 +36,12 @@ class Elia(App[None]):
     def __init__(self, config: LaunchConfig, startup_prompt: str = ""):
         self.launch_config = config
 
-        available_themes: dict[str, Theme] = BUILTIN_THEMES | load_user_themes()
-
-        self.themes: dict[str, Theme] = available_themes
 
         self._runtime_config = RuntimeConfig(
             selected_model=config.default_model_object,
             system_prompt=config.system_prompt,
         )
+
         self.runtime_config_signal = Signal[RuntimeConfig](
             self, "runtime-config-updated"
         )
@@ -56,10 +54,8 @@ class Elia(App[None]):
         This is a convenience which will immediately load the chat interface and
         put users into the chat window, rather than going to the home screen.
         """
-
         super().__init__()
 
-    theme: Reactive[str | None] = reactive(None, init=False)
     @property
     def runtime_config(self) -> RuntimeConfig:
         return self._runtime_config
@@ -71,7 +67,13 @@ class Elia(App[None]):
 
     async def on_mount(self) -> None:
         await self.push_screen(HomeScreen(self.runtime_config_signal))
-        self.theme = self.launch_config.theme
+        available_themes: dict[str, Theme] = BUILTIN_THEMES | load_user_themes()
+        for theme in available_themes.values():
+            self.register_theme(theme)
+        if self.launch_config.theme in self._registered_themes:
+            self.theme = self.launch_config.theme
+        else:
+            self.theme = 'nebula'
         if self.startup_prompt:
             await self.launch_chat(
                 prompt=self.startup_prompt,
@@ -116,12 +118,9 @@ class Elia(App[None]):
             await self.push_screen(HelpScreen())
 
     def get_css_variables(self) -> dict[str, str]:
-        if self.theme:
-            theme = self.themes.get(self.theme)
-            if theme:
-                color_system = theme.to_color_system().generate()
-            else:
-                color_system = {}
+        theme = self.current_theme
+        if theme:
+            color_system = theme.to_color_system().generate()
         else:
             color_system = {}
 
@@ -134,8 +133,8 @@ class Elia(App[None]):
     @property
     def theme_object(self) -> Theme | None:
         try:
-            return self.themes[self.theme]
-        except KeyError:
+            return self.current_theme
+        except AttributeError:
             return None
 
 

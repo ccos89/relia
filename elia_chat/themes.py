@@ -17,6 +17,7 @@ class Theme(BaseModel):
     success: str | None = None
     accent: str | None = None
     dark: bool = True
+    variables: dict
 
     def to_color_system(self) -> ColorSystem:
         """Convert this theme to a ColorSystem."""
@@ -64,6 +65,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         success="#4EBF71",
         accent="#ffa62b",
         dark=True,
+        variables = {},
     ),
     "monokai": Theme(
         name="monokai",
@@ -77,6 +79,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         surface="#3E3D32",  # Slightly lighter gray-green
         panel="#3E3D32",  # Same as surface for consistency
         dark=True,
+        variables={},
     ),
     "nautilus": Theme(
         name="nautilus",
@@ -89,7 +92,8 @@ BUILTIN_THEMES: dict[str, Theme] = {
         dark=True,
         background="#001F3F",  # Dark Blue (deep ocean)
         surface="#003366",  # Navy Blue (shallower water)
-        panel="#005A8C",  # Steel Blue (water surface)
+        panel="#005A8C",  # Steel Blue (water surface),
+        variables={},
     ),
     "galaxy": Theme(
         name="galaxy",
@@ -103,6 +107,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         background="#0F0F1F",  # Very Dark Blue, almost black
         surface="#1E1E3F",  # Dark Blue-Purple
         panel="#2D2B55",  # Slightly Lighter Blue-Purple
+        variables = {},
     ),
     "nebula": Theme(
         name="nebula",
@@ -116,6 +121,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         background="#0A0A23",  # Dark Navy, closer to a night sky
         surface="#1C1C3C",  # Dark Blue-Purple
         panel="#2E2E5E",  # Slightly Lighter Blue-Purple
+        variables = {},
     ),
     "alpine": Theme(
         name="alpine",
@@ -129,6 +135,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         background="#2E3440",  # Dark Slate Grey
         surface="#3B4252",  # Darker Blue-Grey
         panel="#434C5E",  # Lighter Blue-Grey
+        variables = {},
     ),
     "cobalt": Theme(
         name="cobalt",
@@ -142,6 +149,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         surface="#27343B",  # Dark Lead
         panel="#2D3E46",  # Storm Gray
         background="#1F262A",  # Charcoal
+        variables = {},
     ),
     "twilight": Theme(
         name="twilight",
@@ -155,6 +163,7 @@ BUILTIN_THEMES: dict[str, Theme] = {
         background="#191970",
         surface="#3B3B6D",
         panel="#4C516D",
+        variables = {},
     ),
     "hacker": Theme(
         name="hacker",
@@ -168,5 +177,6 @@ BUILTIN_THEMES: dict[str, Theme] = {
         background="#0D0D0D",  # Almost Black
         surface="#1A1A1A",  # Very Dark Gray
         panel="#2A2A2A",  # Dark Gray
+        variables = {},
     ),
 }
