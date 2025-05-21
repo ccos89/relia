@@ -167,7 +167,7 @@ class LaunchConfig(BaseModel):
     builtin_models: list[EliaChatModel] = Field(
         default_factory=get_builtin_models, init=False
     )
-    theme: str = Field(default="monokai")
+    theme: str = Field(default="nebula")
 
     @field_validator("system_prompt")
     def non_empty(cls, value: str) -> str:

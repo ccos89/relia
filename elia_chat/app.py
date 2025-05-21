@@ -39,10 +39,6 @@ class Elia(App[None]):
         available_themes: dict[str, Theme] = BUILTIN_THEMES | load_user_themes()
 
         self.themes: dict[str, Theme] = available_themes
-        self._registered_themes: dict[str, Theme] = {}
-
-        for theme_name in self.themes:
-            self.register_theme(self.themes[theme_name])
 
         self._runtime_config = RuntimeConfig(
             selected_model=config.default_model_object,
@@ -63,7 +59,7 @@ class Elia(App[None]):
 
         super().__init__()
 
-    theme: Reactive[str | None] = reactive(LaunchConfig().theme, init=False)
+    theme: Reactive[str | None] = reactive(None, init=False)
 
     @property
     def runtime_config(self) -> RuntimeConfig:
